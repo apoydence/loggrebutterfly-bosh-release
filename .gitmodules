@@ -1,0 +1,57 @@
+[submodule "src/github.com/apoydence/loggrebutterfly"]
+	path = src/github.com/apoydence/loggrebutterfly
+	url = https://github.com/apoydence/loggrebutterfly
+[submodule "src/github.com/apoydence/onpar"]
+	path = src/github.com/apoydence/onpar
+	url = https://github.com/apoydence/onpar
+[submodule "src/github.com/onsi/gomega"]
+	path = src/github.com/onsi/gomega
+	url = https://github.com/onsi/gomega
+[submodule "src/github.com/onsi/ginkgo"]
+	path = src/github.com/onsi/ginkgo
+	url = https://github.com/onsi/ginkgo
+[submodule "src/gopkg.in/yaml.v2"]
+	path = src/gopkg.in/yaml.v2
+	url = https://gopkg.in/yaml.v2
+[submodule "src/github.com/apoydence/talaria"]
+	path = src/github.com/apoydence/talaria
+	url = https://github.com/apoydence/talaria
+[submodule "src/github.com/nelsam/hel"]
+	path = src/github.com/nelsam/hel
+	url = https://github.com/nelsam/hel
+[submodule "src/github.com/golang/protobuf"]
+	path = src/github.com/golang/protobuf
+	url = https://github.com/golang/protobuf
+[submodule "src/golang.org/x/net"]
+	path = src/golang.org/x/net
+	url = https://go.googlesource.com/net
+[submodule "src/google.golang.org/grpc"]
+	path = src/google.golang.org/grpc
+	url = https://github.com/grpc/grpc-go
+[submodule "src/github.com/apoydence/petasos"]
+	path = src/github.com/apoydence/petasos
+	url = https://github.com/apoydence/petasos
+[submodule "src/github.com/apoydence/eachers"]
+	path = src/github.com/apoydence/eachers
+	url = https://github.com/apoydence/eachers
+[submodule "src/github.com/bradylove/envstruct"]
+	path = src/github.com/bradylove/envstruct
+	url = https://github.com/bradylove/envstruct
+[submodule "src/github.com/cloudfoundry/loggregator-api"]
+	path = src/github.com/cloudfoundry/loggregator-api
+	url = https://github.com/cloudfoundry/loggregator-api
+[submodule "src/github.com/hashicorp/raft"]
+	path = src/github.com/hashicorp/raft
+	url = https://github.com/hashicorp/raft
+[submodule "src/github.com/armon/go-metrics"]
+	path = src/github.com/armon/go-metrics
+	url = https://github.com/armon/go-metrics
+[submodule "src/github.com/hashicorp/go-msgpack"]
+	path = src/github.com/hashicorp/go-msgpack
+	url = https://github.com/hashicorp/go-msgpack
+[submodule "src/github.com/spf13/cobra"]
+	path = src/github.com/spf13/cobra
+	url = https://github.com/spf13/cobra
+[submodule "src/github.com/spf13/pflag"]
+	path = src/github.com/spf13/pflag
+	url = https://github.com/spf13/pflag
