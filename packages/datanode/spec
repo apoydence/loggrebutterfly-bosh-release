@@ -1,0 +1,5 @@
+---
+name: datanode
+
+files:
+- loggrebutterfly/datanode.gz

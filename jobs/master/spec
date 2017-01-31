@@ -1,0 +1,45 @@
+---
+name: master
+templates:
+  ctl.sh.erb: bin/ctl.sh
+
+packages:
+- master
+
+provides:
+- name: master
+  type: master
+  properties:
+  - port
+
+consumes:
+- name: datanode
+  type: datanode
+- name: node
+  type: node
+- name: scheduler
+  type: scheduler
+
+properties:
+  port:
+    description: "The port for the server to listen on"
+    default: 8082
+  scheduler_port:
+    description: "The port of the talaria scheduler"
+    default: 8080
+  pprof_port:
+    description: "The PPROF port"
+    default: 6061
+
+  max_routes:
+    description: "The max number of routes to create"
+    default: 100
+  min_routes:
+    description: "The min number of routes to create"
+    default: 4
+  balance_interval:
+    description: "The interval to query/enforce route balancing (duration)"
+    default: 10s
+  filler_interval:
+    description: "The interval to query/enforce any route gaps (duration)"
+    default: 1s

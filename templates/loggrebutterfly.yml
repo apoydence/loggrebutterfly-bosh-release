@@ -1,0 +1,56 @@
+---
+name: loggrebutterfly
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
+
+releases:
+- name: talaria
+  version: latest
+- name: loggrebutterfly
+  version: latest
+
+instance_groups:
+- name: datanode
+  azs:
+  - z1
+  instances: 3
+  persistent_disk_type: 1GB
+  vm_type: small
+  stemcell: default
+  networks:
+  - name: default
+  jobs:
+  - name: node
+    release: talaria
+  - name: datanode
+    release: loggrebutterfly
+  update:
+    max_in_flight: 10
+
+- name: master
+  azs:
+  - z1
+  instances: 1
+  persistent_disk_type: 1GB
+  vm_type: small
+  stemcell: default
+  networks:
+  - name: default
+  jobs:
+  - name: scheduler
+    release: talaria
+  - name: master
+    release: loggrebutterfly
+  update:
+    max_in_flight: 1
+
+
+update:
+  canaries: 10
+  max_in_flight: 10
+  canary_watch_time: 30000-60000
+  update_watch_time: 5000-60000
+  serial: false

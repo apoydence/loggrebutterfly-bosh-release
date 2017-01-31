@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+
+RUN_DIR=/var/vcap/sys/run/master
+LOG_DIR=/var/vcap/sys/log/master
+PIDFILE=$RUN_DIR/master.pid
+
+mkdir -p $RUN_DIR
+mkdir -p $LOG_DIR
+chown -R vcap:vcap $LOG_DIR
+
+export ADDR=<%="#{spec.address}:#{p('port')}"%>
+export PPROF_ADDR=<%="localhost:#{p('pprof_port')}"%>
+
+export SCHEDULER_ADDR=<%="#{spec.address}:#{link('scheduler').p('port')}"%>
+export DATA_NODE_ADDRS=<%=link("datanode").instances.map{|instance| "#{instance.address}:#{link('datanode').p('intra_port')}"}.join(',') %>
+export DATA_NODE_EXTERNAL_ADDRS=<%=link("datanode").instances.map{|instance| "#{instance.address}:#{link('datanode').p('port')}"}.join(',') %>
+export TALARIA_NODE_ADDRS=<%=link("datanode").instances.map{|instance| "#{instance.address}:#{link('node').p('port')}"}.join(',') %>
+
+export MAX_ROUTES=<%=p('max_routes')%>
+export MIN_ROUTES=<%=p('min_routes')%>
+export BALANCE_INTERVAL=<%=p('balance_interval')%>
+export FILLER_INTERVAL=<%=p('filler_interval')%>
+
+case $1 in
+
+start)
+    ulimit -n 65536
+    chpst -u vcap:vcap /var/vcap/packages/master/master &>> $LOG_DIR/master.log &
+    echo $! > $PIDFILE
+
+    ;;
+
+stop)
+    kill $(cat $PIDFILE)
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}"
+
+    ;;
+
+esac

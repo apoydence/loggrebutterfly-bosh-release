@@ -1,0 +1,36 @@
+#!/bin/bash
+set -e
+
+RUN_DIR=/var/vcap/sys/run/datanode
+LOG_DIR=/var/vcap/sys/log/datanode
+PIDFILE=$RUN_DIR/datanode.pid
+
+mkdir -p $RUN_DIR
+mkdir -p $LOG_DIR
+chown -R vcap:vcap $LOG_DIR
+
+export ADDR=<%="#{spec.address}:#{p('port')}"%>
+export INTRA_ADDR=<%="#{spec.address}:#{p('intra_port')}"%>
+export NODE_ADDR=<%="#{spec.address}:#{link('node').p('port')}"%>
+export PPROF_ADDR=<%="localhost:#{p('pprof_port')}"%>
+
+case $1 in
+
+start)
+    ulimit -n 65536
+    chpst -u vcap:vcap /var/vcap/packages/datanode/datanode &>> $LOG_DIR/datanode.log &
+    echo $! > $PIDFILE
+
+    ;;
+
+stop)
+    kill $(cat $PIDFILE)
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}"
+
+    ;;
+
+esac

@@ -1,0 +1,5 @@
+check process datanode
+  with pidfile /var/vcap/sys/run/datanode/datanode.pid
+  start program "/var/vcap/jobs/datanode/bin/ctl.sh start"
+  stop program "/var/vcap/jobs/datanode/bin/ctl.sh stop"
+  group vcap

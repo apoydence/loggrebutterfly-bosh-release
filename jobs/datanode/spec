@@ -1,0 +1,29 @@
+---
+name: datanode
+templates:
+  ctl.sh.erb: bin/ctl.sh
+
+packages:
+- datanode
+
+provides:
+- name: datanode
+  type: datanode
+  properties:
+  - port
+  - intra_port
+
+consumes:
+- name: node
+  type: node
+
+properties:
+  port:
+    description: "The port for the server to listen on"
+    default: 8082
+  intra_port:
+    description: "The port for the internal communication to listen on"
+    default: 8083
+  pprof_port:
+    description: "The PPROF port"
+    default: 6061
