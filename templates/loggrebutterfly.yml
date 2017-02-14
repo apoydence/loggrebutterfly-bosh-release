@@ -27,6 +27,8 @@ instance_groups:
     release: talaria
   - name: datanode
     release: loggrebutterfly
+  - name: analyst
+    release: loggrebutterfly
   update:
     max_in_flight: 10
 

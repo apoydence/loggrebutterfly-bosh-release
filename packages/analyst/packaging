@@ -1,0 +1,7 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+cd loggrebutterfly
+gunzip analyst.gz
+chmod a+x analyst
+cp -a * ${BOSH_INSTALL_TARGET}

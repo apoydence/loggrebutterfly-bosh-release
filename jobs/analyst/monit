@@ -1,0 +1,5 @@
+check process analyst
+  with pidfile /var/vcap/sys/run/analyst/analyst.pid
+  start program "/var/vcap/jobs/analyst/bin/ctl.sh start"
+  stop program "/var/vcap/jobs/analyst/bin/ctl.sh stop"
+  group vcap

@@ -1,0 +1,33 @@
+---
+name: analyst
+templates:
+  ctl.sh.erb: bin/ctl.sh
+
+packages:
+- analyst
+
+provides:
+- name: analyst
+  type: analyst
+  properties:
+  - port
+  - intra_port
+
+consumes:
+- name: node
+  type: node
+- name: scheduler
+  type: scheduler
+- name: analyst
+  type: analyst
+
+properties:
+  port:
+    description: "The port for the server to listen on"
+    default: 8084
+  intra_port:
+    description: "The port for the internal communication to listen on"
+    default: 8085
+  pprof_port:
+    description: "The PPROF port"
+    default: 6062

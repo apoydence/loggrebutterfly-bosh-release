@@ -1,0 +1,39 @@
+#!/bin/bash
+set -e
+
+RUN_DIR=/var/vcap/sys/run/analyst
+LOG_DIR=/var/vcap/sys/log/analyst
+PIDFILE=$RUN_DIR/analyst.pid
+
+mkdir -p $RUN_DIR
+mkdir -p $LOG_DIR
+chown -R vcap:vcap $LOG_DIR
+
+export ADDR=<%="#{spec.address}:#{p('port')}"%>
+export INTRA_ADDR=<%="#{spec.address}:#{p('intra_port')}"%>
+export TALARIA_NODE_ADDR=<%="#{spec.address}:#{link('node').p('port')}"%>
+export TALARIA_SCHEDULER_ADDR=<%="#{spec.address}:#{link('scheduler').p('port')}"%>
+export TALARIA_NODE_LIST=<%=link("node").instances.map{|instance| "#{instance.address}:#{link('node').p('port')}"}.join(',') %>
+export INTRA_ANALYST_LIST=<%=link("analyst").instances.map{|instance| "#{instance.address}:#{link('analyst').p('port')}"}.join(',') %>
+export PPROF_ADDR=<%="localhost:#{p('pprof_port')}"%>
+
+case $1 in
+
+start)
+    ulimit -n 65536
+    chpst -u vcap:vcap /var/vcap/packages/analyst/analyst &>> $LOG_DIR/analyst.log &
+    echo $! > $PIDFILE
+
+    ;;
+
+stop)
+    kill $(cat $PIDFILE)
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}"
+
+    ;;
+
+esac
