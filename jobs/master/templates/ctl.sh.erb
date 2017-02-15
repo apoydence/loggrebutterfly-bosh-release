@@ -16,6 +16,8 @@ export SCHEDULER_ADDR=<%="#{spec.address}:#{link('scheduler').p('port')}"%>
 export DATA_NODE_ADDRS=<%=link("datanode").instances.map{|instance| "#{instance.address}:#{link('datanode').p('intra_port')}"}.join(',') %>
 export DATA_NODE_EXTERNAL_ADDRS=<%=link("datanode").instances.map{|instance| "#{instance.address}:#{link('datanode').p('port')}"}.join(',') %>
 export TALARIA_NODE_ADDRS=<%=link("datanode").instances.map{|instance| "#{instance.address}:#{link('node').p('port')}"}.join(',') %>
+export ANALYST_ADDRS=<%=link("analyst").instances.map{|instance| "#{instance.address}:#{link('analyst').p('port')}"}.join(',') %>
+
 
 export MAX_ROUTES=<%=p('max_routes')%>
 export MIN_ROUTES=<%=p('min_routes')%>

@@ -12,9 +12,9 @@ chown -R vcap:vcap $LOG_DIR
 export ADDR=<%="#{spec.address}:#{p('port')}"%>
 export INTRA_ADDR=<%="#{spec.address}:#{p('intra_port')}"%>
 export TALARIA_NODE_ADDR=<%="#{spec.address}:#{link('node').p('port')}"%>
-export TALARIA_SCHEDULER_ADDR=<%="#{spec.address}:#{link('scheduler').p('port')}"%>
-export TALARIA_NODE_LIST=<%=link("node").instances.map{|instance| "#{instance.address}:#{link('node').p('port')}"}.join(',') %>
-export INTRA_ANALYST_LIST=<%=link("analyst").instances.map{|instance| "#{instance.address}:#{link('analyst').p('port')}"}.join(',') %>
+export TALARIA_SCHEDULER_ADDR=<%="#{link("scheduler").instances.first.address}:#{link('scheduler').p('port')}"%>
+export TALARIA_NODE_LIST=<%=link("node").instances.map{|instance| "#{instance.address}:#{link('node').p('intra_port')}"}.join(',') %>
+export INTRA_ANALYST_LIST=<%=link("analyst").instances.map{|instance| "#{instance.address}:#{link('analyst').p('intra_port')}"}.join(',') %>
 export PPROF_ADDR=<%="localhost:#{p('pprof_port')}"%>
 
 case $1 in

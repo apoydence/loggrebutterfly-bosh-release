@@ -19,6 +19,8 @@ consumes:
   type: node
 - name: scheduler
   type: scheduler
+- name: analyst
+  type: analyst
 
 properties:
   port:
