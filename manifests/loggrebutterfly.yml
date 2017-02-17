@@ -46,6 +46,8 @@ instance_groups:
     release: talaria
   - name: master
     release: loggrebutterfly
+    properties:
+      buffer_size: 1000
   update:
     max_in_flight: 1
 

@@ -45,3 +45,6 @@ properties:
   filler_interval:
     description: "The interval to query/enforce any route gaps (duration)"
     default: 1s
+  buffer_size:
+    description: "The Talaria buffer size (number of slots)"
+    default: 100
