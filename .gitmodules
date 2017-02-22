@@ -58,3 +58,6 @@
 [submodule "src/github.com/apoydence/mapreduce"]
 	path = src/github.com/apoydence/mapreduce
 	url = https://github.com/apoydence/mapreduce
+[submodule "src/github.com/apoydence/loggr"]
+	path = src/github.com/apoydence/loggr
+	url = https://github.com/apoydence/loggr
